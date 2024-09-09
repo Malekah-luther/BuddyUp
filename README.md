@@ -1,6 +1,3 @@
-Here’s an updated **README** for the BuddyUp app, now focusing on Android Studio as the development environment:
-
----
 
 # BuddyUp App - README
 
@@ -73,6 +70,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 For questions or support, please contact us at **support@buddyupapp.com**.
 
----
-
-You can customize the **Technologies Used** section to match the actual technologies you're using. Let me know if you need further changes!
