@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_green"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/restart_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/restart_button_margin"
+            android:elevation="@dimen/restart_button_elevation"
+            android:src="@drawable/restart_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/recording_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/restart_button_margin"
+            android:elevation="@dimen/restart_button_elevation"
+            android:src="@{viewModel.recording ? @drawable/stop_circle : @drawable/capture}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/restart_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="10"
+            android:text="@string/complete_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/complete_text_size"
+            app:fontPath="fonts/Mynerve-Regular.ttf"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibility="@{viewModel.complete ? View.VISIBLE :View.GONE}" />
+
+        <TextView
+            android:id="@+id/auto_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/restart_button_margin"
+            android:background="@drawable/reset_button_background"
+            android:elevation="@dimen/record_reset_button_elevation"
+            android:paddingHorizontal="@dimen/record_reset_button_padding_horizontal"
+            android:paddingVertical="@dimen/record_reset_button_padding_vertical"
+            android:text="@string/auto_complete_button_text"
+            android:textColor="@color/background_green"
+            android:textSize="@dimen/record_reset_button_text_size"
+            android:visibility="@{viewModel.canComplete ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent="@dimen/layout_height_percent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_stock_and_found">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView0"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView1"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toEndOf="@id/listView0"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView2"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toEndOf="@id/listView1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView3"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toEndOf="@id/listView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView4"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toEndOf="@id/listView3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView5"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toEndOf="@id/listView4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listView6"
+                style="@style/SolitaireListStyle"
+                app:layout_constraintStart_toEndOf="@id/listView5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_stock_and_found"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/stock_and_found_padding"
+            app:layout_constraintHeight_percent="@dimen/stock_and_found_height_percent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_found"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="@dimen/found_width_percent">
+
+                <ImageView
+                    android:id="@+id/found_spade"
+                    style="@style/SolitaireFoundationStyle"
+                    android:onClick="@{() -> viewModel.moveFound(0)}"
+                    app:card="@{viewModel.spadeFound}"
+                    app:context="@{context}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:padding_card="@{viewModel.spadeFound}"
+                    app:padding_side="@{viewModel.spadeFound.side}"
+                    app:side="@{viewModel.spadeFound.side}" />
+
+                <ImageView
+                    android:id="@+id/found_heart"
+                    style="@style/SolitaireFoundationStyle"
+                    android:onClick="@{() -> viewModel.moveFound(1)}"
+                    app:card="@{viewModel.heartFound}"
+                    app:context="@{context}"
+                    app:layout_constraintStart_toEndOf="@id/found_spade"
+                    app:padding_card="@{viewModel.heartFound}"
+                    app:padding_side="@{viewModel.heartFound.side}"
+                    app:side="@{viewModel.heartFound.side}" />
+
+                <ImageView
+                    android:id="@+id/found_clover"
+                    style="@style/SolitaireFoundationStyle"
+                    android:onClick="@{() -> viewModel.moveFound(2)}"
+                    app:card="@{viewModel.cloverFound}"
+                    app:context="@{context}"
+                    app:layout_constraintStart_toEndOf="@id/found_heart"
+                    app:padding_card="@{viewModel.cloverFound}"
+                    app:padding_side="@{viewModel.cloverFound.side}"
+                    app:side="@{viewModel.cloverFound.side}" />
+
+                <ImageView
+                    android:id="@+id/found_diamond"
+                    style="@style/SolitaireFoundationStyle"
+                    android:onClick="@{() -> viewModel.moveFound(3)}"
+                    app:card="@{viewModel.diamondFound}"
+                    app:context="@{context}"
+                    app:layout_constraintStart_toEndOf="@id/found_clover"
+                    app:padding_card="@{viewModel.diamondFound}"
+                    app:padding_side="@{viewModel.diamondFound.side}"
+                    app:side="@{viewModel.diamondFound.side}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_stock"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toEndOf="@id/layout_found"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="@dimen/stock_width_percent">
+
+                <ImageView
+                    android:id="@+id/stock_front2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.moveStock()}"
+                    android:scaleType="fitXY"
+                    android:paddingBottom="5dp"
+                    app:layout_constraintStart_toEndOf="@id/stock_front1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="@dimen/stock_card_width_percent"
+                    app:open_card_list="@{viewModel.openCardList}"
+                    app:open_context="@{context}"
+                    app:open_index="@{0}" />
+
+                <ImageView
+                    android:id="@+id/stock_back"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:onClick="@{() -> viewModel.openStock()}"
+                    android:paddingBottom="5dp"
+                    android:src="@drawable/trump_background"
+                    app:close_card="@{viewModel.closeCard}"
+                    app:close_context="@{context}"
+                    app:layout_constraintStart_toEndOf="@id/stock_front2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="@dimen/stock_card_width_percent" />
+
+                <io.github.kurramkurram.solitaire.view.LeftCropImageView
+                    android:id="@+id/stock_front0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="@dimen/stock_overlap_card_width_percent"
+                    app:open_card_list="@{viewModel.openCardList}"
+                    app:open_context="@{context}"
+                    app:open_index="@{2}" />
+
+                <io.github.kurramkurram.solitaire.view.LeftCropImageView
+                    android:id="@+id/stock_front1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="5dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/stock_front0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="@dimen/stock_overlap_card_width_percent"
+                    app:open_card_list="@{viewModel.openCardList}"
+                    app:open_context="@{context}"
+                    app:open_index="@{1}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintHeight_percent="@dimen/header_height_percent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/count_image"
+                style="@style/SolitaireHeaderImageView"
+                android:src="@drawable/touch"
+                app:layout_constraintEnd_toStartOf="@id/count" />
+
+            <ImageView
+                android:id="@+id/timer_image"
+                style="@style/SolitaireHeaderImageView"
+                android:src="@drawable/timer"
+                app:layout_constraintEnd_toStartOf="@id/timer" />
+
+            <TextView
+                android:id="@+id/count"
+                style="@style/SolitaireHeader"
+                android:text="@{viewModel.count.toString()}"
+                app:layout_constraintEnd_toStartOf="@id/timer_image" />
+
+            <TextView
+                android:id="@+id/timer"
+                style="@style/SolitaireHeader"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:text="@{viewModel.time}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <import type="io.github.kurramkurram.solitaire.util.SIDE" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="io.github.kurramkurram.solitaire.viewmodel.SolitaireViewModel" />
+    </data>
+</layout>

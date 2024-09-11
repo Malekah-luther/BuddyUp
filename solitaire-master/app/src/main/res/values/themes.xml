@@ -1,0 +1,177 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Solitaire" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/background_green</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ApplicationPrivacyPolicyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/background_green</item>
+        <item name="colorPrimaryDark">@color/background_green</item>
+        <item name="android:statusBarColor">@color/background_green</item>
+    </style>
+
+    <style name="SolitaireHeader">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:layout_marginHorizontal">10dp</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="SolitaireHeaderImageView">
+        <item name="android:layout_width">@dimen/record_header_image_wh</item>
+        <item name="android:layout_height">@dimen/record_header_image_wh</item>
+        <item name="android:layout_marginStart">@dimen/record_header_image_margin_start</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="SolitaireListStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_percent">0.142</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="SolitaireFoundationStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="layout_constraintWidth_percent">0.25</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="android:text">empty</item>
+    </style>
+
+    <style name="SolitaireDialogStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">@dimen/dialog_text_size</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="SolitaireDialogStyle.Text" parent="SolitaireDialogStyle">
+        <item name="android:gravity">start</item>
+        <item name="android:layout_marginBottom">@dimen/dialog_margin</item>
+        <item name="android:layout_marginHorizontal">@dimen/dialog_margin</item>
+    </style>
+
+    <style name="SolitaireDialogStyle.Button" parent="SolitaireDialogStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/dialog_padding</item>
+        <item name="android:layout_margin">@dimen/dialog_margin</item>
+
+    </style>
+
+    <style name="SolitaireSettings" />
+
+    <style name="SolitaireSettings.Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="SolitaireSettings.Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="android:src">@drawable/divider</item>
+    </style>
+
+    <style name="SolitaireSettings.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/setting_item_height</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <style name="SolitaireSettings.Arrow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:src">@drawable/ic_arrow_forward</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+    </style>
+
+    <style name="SolitaireSettings.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">@dimen/setting_item_text_view_margin_start</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="SolitaireSettings.TextView.NoIcon" parent="SolitaireSettings.TextView">
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="SolitaireSettings.Header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="RecordItemText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginVertical">@dimen/record_list_item_margin_vertical</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+    <style name="RecordItemText.Rank" parent="RecordItemText">
+        <item name="android:textSize">@dimen/record_list_item_rank_text_size</item>
+        <item name="android:layout_marginEnd">@dimen/record_list_item_margin_End</item>
+        <item name="android:textStyle">bold</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+    </style>
+
+    <style name="RecordItemText.ResultNormal" parent="RecordItemText">
+        <item name="android:textSize">@dimen/record_list_item_text_size</item>
+    </style>
+
+    <style name="RecordItemImageView">
+        <item name="android:layout_height">@dimen/record_list_item_image_wh</item>
+        <item name="android:layout_width">@dimen/record_list_item_image_wh</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="android:layout_marginStart">@dimen/record_list_item_image_margin_start</item>
+    </style>
+
+    <style name="Checkbox">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="Theme.TranslucentBackground" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="SwitchButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/dark_green</item>
+        <item name="android:colorForeground">@color/white</item>
+    </style>
+</resources>
